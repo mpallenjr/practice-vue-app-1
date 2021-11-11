@@ -1,8 +1,14 @@
 <template>
   <div class="home">
-    <div>
-      <h1>hello</h1>
-      <p>{{ photos }}</p>
+    <h1>hello</h1>
+    <hr />
+    <div v-for="photo in photos">
+      <p>ID:{{ photo.id }}</p>
+      <p>Name:{{ photo.name }}</p>
+      <p>Price:{{ photo.price }}</p>
+      <p>Description:{{ photo.description }}</p>
+      <img v-bind:src="photo.image_url">
+      <hr/>
     </div>
   </div>
 </template>
@@ -26,6 +32,7 @@ methods: {
 console.log('hello')
 axios.get("http://localhost:3000/photos").then(response => {
   console.log(response.data)
+  this.photos = response.data
 } )
 
   },
