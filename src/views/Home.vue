@@ -14,6 +14,7 @@
       <p>Price:{{ photo.price }}</p>
       <p>Description:{{ photo.description }}</p>
       <img v-bind:src="photo.image_url">
+      <button v-on:click="showPhotos()">More Info</button>
       <hr/>
     </div>
   </div>
@@ -56,6 +57,11 @@ axios.get("http://localhost:3000/photos").then(response => {
       console.log(response.data)
     })
 
+
+  },
+  showPhotos: function(){
+
+    console.log('hello')
 
   },
 
