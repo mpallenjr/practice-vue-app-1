@@ -13,15 +13,17 @@
       <p>Name:{{ photo.name }}</p>
       <p>Price:{{ photo.price }}</p>
       <p>Description:{{ photo.description }}</p>
-       <p><button v-on:click="showPhotos()">More Info</button></p>
+       <p><button v-on:click="showPhotos(photo)">More Info</button></p>
       <img v-bind:src="photo.image_url">
       <hr/>
     </div>
     <dialog id="show-photo">
       <form method="dialog">
+        <p>Name:   {{ selectedPhoto.name }}</p>
+        <p>Price:   {{ selectedPhoto.price }}</p>
+        <p>Description:   {{ selectedPhoto.description }}</p>
         <button>Close</button>
       </form>
-    <p>hello there mike!</p>
       </dialog>
   </div>
 </template>
@@ -34,7 +36,8 @@ data: function() {
 return {
   // where stuff goes in data
 photos: [],
-newPhotos: {}
+newPhotos: {},
+selectedPhoto: {}
 };
 },
 created: function() {
@@ -65,10 +68,12 @@ axios.get("http://localhost:3000/photos").then(response => {
 
 
   },
-  showPhotos: function(){
-
+  showPhotos: function(thePhoto){
+console.log(thePhoto)
     console.log('hello')
+    this.selectedPhoto = thePhoto;
     document.querySelector("#show-photo").showModal();
+    
 
   },
 
