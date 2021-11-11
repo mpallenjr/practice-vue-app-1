@@ -2,6 +2,10 @@
   <div class="home">
     <h1>hello</h1>
     <hr />
+    <p>Name:<input type="text" v-model="newPhotos.name"></p>
+    <p>Price:<input type="text" v-model="newPhotos.price"></p>
+    <p>Description:<input type="text" v-model="newPhotos.description"/></p>
+    <p>Image:<input type="text" v-model="newPhotos.image_url"/></p>
     <button v-on:click="createPhotos()">Create Action</button>
 
     <div v-for="photo in photos">
@@ -22,7 +26,8 @@ export default {
 data: function() {
 return {
   // where stuff goes in data
-photos: []
+photos: [],
+newPhotos: {}
 };
 },
 created: function() {
@@ -41,10 +46,10 @@ axios.get("http://localhost:3000/photos").then(response => {
     console.log('hello')
     axios.post("http://localhost:3000/photos",
     {
-      name: "Wild Horses",
-      price: 500,
-      description: "horses running free and wild",
-      image_url: "https://cdn.mos.cms.futurecdn.net/Nk4TdwHqFDKXZQwkvaiyEC.jpg"
+      name: this.newPhotos.name,
+      price: this.newPhotos.price,
+      description: this.newPhotos.description,
+      image_url: this.newPhotos.image_url
 
 
     }).then(response => {
