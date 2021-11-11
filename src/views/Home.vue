@@ -39,7 +39,15 @@ axios.get("http://localhost:3000/photos").then(response => {
 
   createPhotos: function() {
     console.log('hello')
-    axios.post("http://localhost:3000/photos").then(response => {
+    axios.post("http://localhost:3000/photos",
+    {
+      name: "Wild Horses",
+      price: 500,
+      description: "horses running free and wild",
+      image_url: "https://cdn.mos.cms.futurecdn.net/Nk4TdwHqFDKXZQwkvaiyEC.jpg"
+
+
+    }).then(response => {
       console.log(response.data)
     })
 
