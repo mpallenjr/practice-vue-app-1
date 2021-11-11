@@ -13,10 +13,13 @@
       <p>Name:{{ photo.name }}</p>
       <p>Price:{{ photo.price }}</p>
       <p>Description:{{ photo.description }}</p>
+       <p><button v-on:click="showPhotos()">More Info</button></p>
       <img v-bind:src="photo.image_url">
-      <button v-on:click="showPhotos()">More Info</button>
       <hr/>
     </div>
+    <dialog id="show-photo">
+    <p>hello there mike!</p>
+      </dialog>
   </div>
 </template>
 
@@ -62,6 +65,7 @@ axios.get("http://localhost:3000/photos").then(response => {
   showPhotos: function(){
 
     console.log('hello')
+    document.querySelector("#show-photo").showModal();
 
   },
 
