@@ -18,6 +18,9 @@
       <hr/>
     </div>
     <dialog id="show-photo">
+      <form method="dialog">
+        <button>Close</button>
+      </form>
     <p>hello there mike!</p>
       </dialog>
   </div>
